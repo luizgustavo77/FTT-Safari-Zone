@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: '#DFDFDF',
         alignItems: 'center',
         justifyContent: 'flex-start',
         marginTop: StatusBar.currentHeight,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         width: '100%',
         height: 60,
-        backgroundColor: '#6b798f',
+        backgroundColor: '#DFDFDF',
         alignItems: 'center',
         borderBottomColor: '#000',
     },
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#040d59',
+        backgroundColor: '#DFDFDF',
     },
     containerHeader: {
         width: '100%',
         height: 95,
-        backgroundColor: '#6b798f',
+        backgroundColor: '#ffcb05',
         alignItems: 'center',
         borderBottomColor: '#000',
         borderBottomWidth: 5,
