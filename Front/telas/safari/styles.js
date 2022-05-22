@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     },
     areaScroolView: {
         width: '95%',
+        textAlign: "center"
     },
     waiting: {
         marginTop: 100,
@@ -23,9 +24,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         width: '100%',
         height: 60,
-        backgroundColor: '#FFFFFF',
         alignItems: 'center',
-        borderBottomColor: '#000',
+        borderTopColor: '#000',
+        borderTopWidth: 5,
     },
     textoBotao: {
         color: '#FFF',
@@ -40,6 +41,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FB1B1B',
+    },
+    textoArea: {
+        fontSize: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     containerHeader: {
         width: '100%',

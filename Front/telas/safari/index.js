@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import {
-    Alert, ScrollView, View, Text, TouchableOpacity,
+    Alert, ScrollView, Text, TouchableOpacity, View
 } from 'react-native';
 import CardPokemon from '../../componentes/cardPokemon/index';
-import Header from '../../componentes/Header';
-import api from '../../service/api'
+import api from '../../service/api';
 import pokeApi from '../../service/pokeApi';
 import styles from './styles';
 
@@ -12,6 +11,7 @@ export default function Safari({ navigation }) {
 
     const [lista, setLista] = useState([]);
     const [load, setLoad] = useState(false);
+    const [areas, setAreas] = useState(0);
 
     useEffect(
         () => {
@@ -27,6 +27,10 @@ export default function Safari({ navigation }) {
         }
 
         try {
+            let area = areas;
+            area = area + 1;
+
+            setAreas(area);
             setLoad(true);
 
             for (let i = 0; i < 4; i++) {
@@ -56,15 +60,16 @@ export default function Safari({ navigation }) {
     }
 
     async function addPokemon(externalNumber) {
-        {
-            let pokemon = {
-                externalNumber: externalNumber,
-            };
+        let pokemon = {
+            externalNumber: externalNumber,
+            area: areas,
+            hora: new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString(),
+        };
 
-            await api.post('/pokemonControll/pokemon', pokemon)
-                .then(() => carregaLista(true))
-                .catch(error => console.log(error));
-        }
+        await api.post('/pokemonControll/pokemon', pokemon)
+            .then(() => carregaLista(true))
+            .catch(error => console.log(error));
+
     }
 
     function pokemonList() {
@@ -84,6 +89,7 @@ export default function Safari({ navigation }) {
             </View>
 
             <ScrollView style={styles.areaScroolView}>
+                <Text style={styles.textoArea}> Área atual: {areas} </Text>
                 {
                     lista.map((pokemon, index) => (
                         <CardPokemon key={index.toString()} pokemon={pokemon} capturar={capturar} ></CardPokemon>
@@ -93,7 +99,7 @@ export default function Safari({ navigation }) {
             </ScrollView >
             <View style={styles.containerFooter}>
                 <TouchableOpacity style={styles.botao} onPress={() => carregaLista(true)}>
-                    <Text style={styles.textoBotao}> Próximo </Text>
+                    <Text style={styles.textoBotao}> Próximo Área </Text>
                 </TouchableOpacity>
             </View>
         </View >

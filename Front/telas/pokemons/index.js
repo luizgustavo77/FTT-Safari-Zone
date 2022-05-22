@@ -33,6 +33,8 @@ export default function PokemonList({ navigation }) {
             for (let i = 0; i < pokemonList.data.length; i++) {
                 let pokemon = await pokeApi.get('/' + pokemonList.data[i].externalNumber);
                 pokemon.data._id = pokemonList.data[i]._id;
+                pokemon.data.area = pokemonList.data[i].area;
+                pokemon.data.hora = pokemonList.data[i].hora;
                 lista.push(pokemon.data);
             }
             setLoad(false);
@@ -83,7 +85,7 @@ export default function PokemonList({ navigation }) {
             <ScrollView style={styles.areaScroolView}>
                 {
                     lista.map((pokemon, index) => (
-                        <CardPokemon key={index.toString()} pokemon={pokemon} capturar={capturar} ></CardPokemon>
+                        <CardPokemon key={index.toString()} pokemon={pokemon} capturar={capturar} detail={true}></CardPokemon>
                     )
                     )
                 }
